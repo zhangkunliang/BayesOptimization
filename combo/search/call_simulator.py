@@ -5,5 +5,5 @@ def call_simulator(simu, action):
         x = output[1]
     else:
         t = output
-        x = None  # self.test.X[action, :]
+        x = None  # self.Cnb_test.X[action, :]
     return t, x

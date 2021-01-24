@@ -2,7 +2,7 @@
 import numpy as np
 from scipy import spatial
 import _src
-from _src.enhance_gauss import grad_width64
+#from _src.enhance_gauss import grad_width64
 
 class gauss:
     ''' gaussian kernel '''

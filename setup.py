@@ -4,6 +4,7 @@ from Cython.Distutils import build_ext
 import numpy
 from Cython.Build import cythonize
 
+
 compile_flags =['-O3',]
 ext_mods = [Extension( name ='combo.misc._src.traceAB',
                       sources=['combo/misc/_src/traceAB.pyx'],

@@ -9,7 +9,7 @@ BLM_TS
 GP_EI
 random
 res
-data
+Cnb_test_data
 describe_graph.ipynb
 run_random.py
 script.py

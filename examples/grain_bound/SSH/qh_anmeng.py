@@ -5,7 +5,7 @@ import paramiko
 
 class SSH_qh:
     def __init__(self):
-        self.private_key = paramiko.RSAKey.from_private_key_file('../tmp/anmeng', 'net@123456')
+        self.private_key = paramiko.RSAKey.from_private_key_file('../tmp/anmeng', '')
         self.username = 'anmeng'
         self.hostname = '192.168.1.2'
         self.port = 22

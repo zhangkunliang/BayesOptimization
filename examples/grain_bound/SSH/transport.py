@@ -2,7 +2,7 @@
 # -*-coding:utf-8-*-
 import paramiko
 
-private_key = paramiko.RSAKey.from_private_key_file('../tmp/anmeng', 'net@123456')
+private_key = paramiko.RSAKey.from_private_key_file('../tmp/anmeng', '')
 
 # 创建SSH对象
 ssh = paramiko.SSHClient()

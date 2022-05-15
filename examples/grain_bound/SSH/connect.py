@@ -11,7 +11,7 @@ class SshClass:
     ip = '192.168.1.2'
     port = 22
     username = 'anmeng'
-    password = 'net@123456'
+    password = ''
     timeout = 0
     ssh = None
 
@@ -37,7 +37,7 @@ class SshClass:
         :param key: str  rsa密钥路径
         :return: ssh连接对象
         """
-        rsa_key = paramiko.RSAKey.from_private_key_file(key, 'net@123456')
+        rsa_key = paramiko.RSAKey.from_private_key_file(key, '')
         self.ssh.connect(hostname=self.ip, port=self.port, username=self.username, pkey=rsa_key, timeout=self.timeout)
         if self.ssh:
             return self.ssh
@@ -87,7 +87,7 @@ if __name__ == '__main__':
     # 获取Transport实例
     tran = paramiko.Transport('192.168.1.2', 22)
     # 连接SSH服务端，使用password
-    tran.connect(username='anmeng', password='net@123456')
+    tran.connect(username='anmeng', password='')
     # 获取SFTP实例
     sftp = paramiko.SFTPClient.from_transport(tran)
     # 设置上传的本地/远程文件路径

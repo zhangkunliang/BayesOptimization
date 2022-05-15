@@ -3,5 +3,3 @@ import score
 import discrete
 
 
-def utility():
-    return None

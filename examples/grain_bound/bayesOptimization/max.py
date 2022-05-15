@@ -8,9 +8,9 @@ import time
 # time_start = time.time()
 def load_data():
     # A =  np.asarray(np.loadtxt('TC_lina_A4_R12_M8.txt',skiprows=0,delimiter=' ') )
-    A = np.asarray(np.loadtxt('Cnb_test_data/conductivity.csv', skiprows=0, delimiter=','))
-    X = A[:, 0:9]
-    t = A[:, 9]
+    A = np.asarray(np.loadtxt('../Cnb_test_data/wanxiao_data.txt', skiprows=0, delimiter=' '))
+    X = A[:, 0:10]
+    t = A[:, 10]
     return X, t
 
 
@@ -86,7 +86,7 @@ def get_result(kw):
 
 
 if __name__ == "__main__":
-    npool = 1
+    npool = 10
     pool = multiprocessing.Pool(npool)
     results = []
     for i in range(npool):
@@ -95,7 +95,7 @@ if __name__ == "__main__":
     pool.join()
 
     # g = r'/home/xiao/lina/result_A4_R12_M8_max.txt'
-    g = r'Cnb_test_data/test2.csv'
+    g = r'../Cnb_test_data/test4.csv'
     id_str = []
     fx = []
     h_id_str = []
@@ -110,10 +110,10 @@ if __name__ == "__main__":
         m = []
         m.append(str(j + 1))
         for k in range(npool):
-            m.append(id_str[k][j])
+            # m.append(id_str[k][j])
             m.append(str(fx[k][j]))
-            m.append(h_id_str[k][j])
-            m.append(str(h_fx[k][j]))
+            # m.append(h_id_str[k][j])
+            # m.append(str(h_fx[k][j]))
         b = ','.join(m)
         with open(g, 'a+') as qdata:
             qdata.write(b + '\n')

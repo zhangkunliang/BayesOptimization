@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# coding=utf-8
 from __future__ import print_function
 
 import numpy as np
@@ -13,13 +15,13 @@ num = 0
 
 def load_data():
     A = np.loadtxt('descriptor.dat')
-    print (A.shape)
+    print(A.shape)
     X = A
-    print (X.shape[0])
+    print(X.shape[0])
     return X
 
 
-log = open('bo_log', 'w')
+log = open('../bo_log', 'w')
 
 # Load the Cnb_test_data.
 # X is the N x d dimensional matrix. Each row of X denotes the d-dimensional feature vector of search candidate. 
@@ -37,19 +39,20 @@ X = load_data()
 class simulator:
 
     def __init__(self):
-        print ('Call simulator')
+        print('Call simulator')
         self.t = np.zeros(X.shape[0])
         # self.t =  np.loadtxt('mao_03.out')
-        print ('Hello!')
+        print('Hello!')
 
+    # __call__函数：使类实例对象可以像调用普通函数那样，以”对象名()“的形式使用
     def __call__(self, action):
         global num
         num = num + 1
-        print (num)
+        print(num)
         if num <= 26:
             print(action + 1)
             structure_current = X[action, :]
-            np.savetxt('input_Descriptor.dat', action + 1, fmt='%d')
+            np.savetxt('input_Descriptor_1st.dat', action + 1, fmt='%d')
             os.system('ifort -o F90_ReadThermalConductance_For_Combo.exe F90_ReadThermalConductance_For_Combo.f90')
             os.system('./F90_ReadThermalConductance_For_Combo.exe>out.f90')
             os.system('mv out.f90 ./out_' + str(num) + '.f90')
@@ -59,19 +62,19 @@ class simulator:
             log.write(str(action + 1))
             log.write('\n')
             log.flush()
-            print (X[action, :])
-            print (etot)
+            print(X[action, :])
+            print(etot)
             np.savetxt('mao_03.out', self.t, fmt='%1.4f')
             return self.t[action]
 
         else:
-            print (action + 1)
+            print(action + 1)
             structure_current = X[action, :]
-            np.savetxt('input_Descriptor.dat', action + 1, fmt='%d')
+            np.savetxt('input_Descriptor_1st.dat', action + 1, fmt='%d')
             log.write(str(action + 1))
             log.write('\n')
             log.flush()
-            print (X[action, :])
+            print(X[action, :])
             np.savetxt('mao_03.out', self.t, fmt='%1.4f')
             return self.t[action]
 
@@ -134,7 +137,7 @@ t = simulator(actions)  # experiment
 policy.write(actions, t)  # record new observations
 combo.search.utility.show_search_results(policy.history, 10)  # describe search results
 
-with open('predictor.dump', 'w') as f:
+with open('../predictor.dump', 'w') as f:
     pickle.dump(policy.predictor, f)
 policy.training.save('training.npz')
 policy.history.save('history.npz')

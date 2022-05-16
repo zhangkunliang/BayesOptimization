@@ -9,8 +9,8 @@ import time
 # t = qh.connect()
 # sftp = t.open_sftp()
 
-with open('../bayesOptimization/kl_data/input_decriptor/input_Descriptor_3st.dat', 'r') as read_input_descriptor_dat:
-    with open('../bayesOptimization/kl_data/descriptor.dat', 'r') as read_descriptor_dat:
+with open('../kl_data/input_decriptor/input_Descriptor_4st.dat', 'r') as read_input_descriptor_dat:
+    with open('../kl_data/descriptor.dat', 'r') as read_descriptor_dat:
         read_input_seq = read_input_descriptor_dat.readlines()
         read_seq = read_descriptor_dat.readlines()
         # print (read_seq)

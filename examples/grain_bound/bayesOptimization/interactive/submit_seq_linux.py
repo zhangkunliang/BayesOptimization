@@ -5,7 +5,7 @@ import time
 remote_path = '/work1/anmeng_work/zkl'
 
 # 提交随机序列的...
-f = open('input_Descriptor_3st.dat', 'r')
+f = open('input_Descriptor_4st.dat', 'r')
 readline = f.readlines()
 len_num_sequence = len(readline)
 
